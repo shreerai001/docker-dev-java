@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  demo3-db:
+    image: "mysql:8.0"
+    restart: always
+    ports:
+      - "3308:3306"
+    environment:
+      - MYSQL_DATABASE=demo3
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=Linux_ubuntu1
+#      - MYSQL_HOST=jdbc:mysql://localhost:3306/
+    volumes:
+      - /opt/mysql_data:/var/lib/mysql
+      - ./:/project
+  demo3:
+    depends_on:
+      - demo3-db
+    image: shree/demo3
+    volumes:
+      - /home/shree/lab/server/apache-tomcat-9.0.54/conf/config:/usr/local/tomcat/conf/config
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://demo3-db:3306/demo3'
+      SPRING_DATASOURCE_USERNAME: 'root'
+      SPRING_DATASOURCE_PASSWORD: 'root'
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: 'com.mysql.cj.jdbc.Driver'

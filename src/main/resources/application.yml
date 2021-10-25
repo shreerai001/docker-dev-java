@@ -1,0 +1,15 @@
+catalina:
+  home: "/home/shree/lab/server/apache-tomcat-9.0.54"
+spring:
+  profiles:
+    active: qa
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: 'jdbc:mysql://demo3-db:3307/demo3'
+    url: 'jdbc:mysql://localhost:3306/demo3'
+    username: root
+    password: root
+

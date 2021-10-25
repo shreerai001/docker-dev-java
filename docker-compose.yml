@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  demo3:
+    image: shree/demo3
+    volumes:
+      - type: bind
+        source: "~/lab/server/apache-tomcat-9.0.54/conf/config/"
+        target: "/usr/local/tomcat/conf/"
+    build:
+      context: "."
+    ports:
+      - "8080:8080"
