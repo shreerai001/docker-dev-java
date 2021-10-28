@@ -9,7 +9,7 @@ services:
       - MYSQL_DATABASE=demo3
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_PASSWORD=Linux_ubuntu1
-#      - MYSQL_HOST=jdbc:mysql://localhost:3306/
+    #      - MYSQL_HOST=jdbc:mysql://localhost:3306/
     volumes:
       - /opt/mysql_data:/var/lib/mysql
       - ./:/project
@@ -23,6 +23,7 @@ services:
       context: "."
       dockerfile: Dockerfile
     ports:
+      - "8094:80"
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: 'jdbc:mysql://demo3-db:3306/demo3'
