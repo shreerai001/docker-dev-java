@@ -11,7 +11,7 @@ COPY target/ROOT.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
-EXPOSE 80
+#EXPOSE 80
 
 RUN rm -fr /usr/local/tomcat/webapps/ROOT
 

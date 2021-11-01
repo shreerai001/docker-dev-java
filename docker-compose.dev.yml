@@ -13,7 +13,37 @@ services:
     volumes:
       - /opt/mysql_data:/var/lib/mysql
       - ./:/project
+  frontend:
+    image: "shree/frontend"
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - '8089:4200'
+      - '49153:49153'
+    volumes:
+      - ./frontend:/usr/src/app
+    command:
+      - bash -c "npm start"
+  tech:
+    container_name: tech
+    depends_on:
+      - demo3-db
+    image: shree/demo3
+    volumes:
+      - /home/shree/lab/server/apache-tomcat-9.0.54/conf/config:/usr/local/tomcat/conf/config
+    build:
+      context: "./tech"
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8080"
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://demo3-db:3306/demo3'
+      SPRING_DATASOURCE_USERNAME: 'root'
+      SPRING_DATASOURCE_PASSWORD: 'root'
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: 'com.mysql.cj.jdbc.Driver'
   demo3:
+    container_name: demo3
     depends_on:
       - demo3-db
     image: shree/demo3
@@ -23,8 +53,7 @@ services:
       context: "."
       dockerfile: Dockerfile
     ports:
-      - "8094:80"
-      - "8080:8080"
+      - "8081:8080"
     environment:
       SPRING_DATASOURCE_URL: 'jdbc:mysql://demo3-db:3306/demo3'
       SPRING_DATASOURCE_USERNAME: 'root'
