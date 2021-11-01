@@ -12,4 +12,3 @@ spring:
     url: 'jdbc:mysql://localhost:3306/demo3'
     username: root
     password: root
-

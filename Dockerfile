@@ -3,13 +3,13 @@ FROM tomcat:8.5-alpine
 RUN apk add maven
 #RUN mvn clean install
 
-RUN apk add nginx
-
-COPY frontend/dist/* /usr/share/nginx/html
+#RUN apk add nginx
+#
+#COPY frontend/dist/* /usr/share/nginx/html
 
 COPY target/ROOT.war /usr/local/tomcat/webapps/
 
-EXPOSE 8080
+EXPOSE 8081
 
 #EXPOSE 80
 

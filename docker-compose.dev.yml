@@ -13,23 +13,18 @@ services:
     volumes:
       - /opt/mysql_data:/var/lib/mysql
       - ./:/project
-  frontend:
-    image: "shree/frontend"
+  angular-service:
     build:
       context: ./frontend
       dockerfile: Dockerfile.dev
-    ports:
-      - '8089:4200'
-      - '49153:49153'
     volumes:
-      - ./frontend:/usr/src/app
-    command:
-      - bash -c "npm start"
+      - './frontend:/usr/src/app'
+    ports:
+      - '4200:4200'
   tech:
     container_name: tech
     depends_on:
       - demo3-db
-    image: shree/demo3
     volumes:
       - /home/shree/lab/server/apache-tomcat-9.0.54/conf/config:/usr/local/tomcat/conf/config
     build:
@@ -46,7 +41,6 @@ services:
     container_name: demo3
     depends_on:
       - demo3-db
-    image: shree/demo3
     volumes:
       - /home/shree/lab/server/apache-tomcat-9.0.54/conf/config:/usr/local/tomcat/conf/config
     build:

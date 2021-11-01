@@ -29,7 +29,7 @@ public class ProgrammerController {
 
     @GetMapping
     public String getTechStack() {
-        return restTemplate.getForObject("http://localhost:8080", String.class) + "Here";
+        return restTemplate.getForObject("http://localhost:8082", String.class) + "Here";
     }
 
 }

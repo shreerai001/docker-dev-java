@@ -21,11 +21,7 @@ import org.springframework.web.client.RestTemplate;
         }
 )
 @SpringBootApplication
-public class Demo3Application extends SpringBootServletInitializer
-        implements CommandLineRunner {
-
-    @Autowired
-    private ProgrammerRepository programmerRepository;
+public class Demo3Application extends SpringBootServletInitializer {
 
 
     public static void main(String[] args) {
@@ -37,15 +33,6 @@ public class Demo3Application extends SpringBootServletInitializer
         return builder.sources(Demo3Application.class);
     }
 
-    private void test() {
-        programmerRepository.save(new Programmer("Shree", "Scala"));
-        System.out.println("saved");
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        test();
-    }
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
