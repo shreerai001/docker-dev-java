@@ -11,6 +11,6 @@ export class TestService {
   }
 
   getTestData(): Observable<string> {
-    return this.httpClient.get<string>("localhost:8081");
+    return this.httpClient.get<string>("http://localhost:8081");
   }
 }

@@ -9,7 +9,7 @@ services:
       - MYSQL_DATABASE=demo3
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_PASSWORD=Linux_ubuntu1
-    #      - MYSQL_HOST=jdbc:mysql://localhost:3306/
+      - MYSQL_HOST=jdbc:mysql://localhost:3306/
     volumes:
       - /opt/mysql_data:/var/lib/mysql
       - ./:/project
@@ -21,6 +21,8 @@ services:
       - './frontend:/usr/src/app'
     ports:
       - '4200:4200'
+    links:
+      - tech
   tech:
     container_name: tech
     depends_on:

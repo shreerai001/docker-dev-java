@@ -4,6 +4,7 @@ package com.shree.demo3;
 import com.shree.demo3.model.Programmer;
 import com.shree.demo3.repo.ProgrammerRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,7 @@ public class TestController {
     @Value("${test-string}")
     private String testString;
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public String helloWorld() {
         return "Hello there the angel from the nightmare.." + testString;
     }

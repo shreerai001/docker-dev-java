@@ -1,6 +1,6 @@
 FROM tomcat:8.5-alpine
 
-RUN apk add maven
+#RUN apk add maven
 #RUN mvn clean install
 
 #RUN apk add nginx

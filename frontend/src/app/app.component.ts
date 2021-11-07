@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     this.testService.getTestData().subscribe(stringData => {
       this.title = stringData;
       console.log(this.title)
+      console.log(stringData)
     })
   }
 }
