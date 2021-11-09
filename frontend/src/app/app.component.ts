@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {TestService} from "./test.service";
+import {Test} from "./Test";
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import {TestService} from "./test.service";
 })
 export class AppComponent implements OnInit {
   title = 'frontend';
+  test: Test = new Test();
 
 
   constructor(private testService: TestService) {
@@ -16,16 +18,15 @@ export class AppComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {
     this.testData();
   }
 
   testData() {
-    this.testService.getTestData().subscribe(stringData => {
-      this.title = stringData;
-      console.log(this.title)
-      console.log(stringData)
-    })
+    this.testService.getTestData()
+      .subscribe(response => {
+        this.test = response
+        this.title = this.test.message;
+      })
   }
 }

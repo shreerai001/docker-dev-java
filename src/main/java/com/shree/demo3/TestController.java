@@ -2,6 +2,7 @@ package com.shree.demo3;
 
 
 import com.shree.demo3.model.Programmer;
+import com.shree.demo3.model.TestResponse;
 import com.shree.demo3.repo.ProgrammerRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -25,8 +26,10 @@ public class TestController {
     private String testString;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public String helloWorld() {
-        return "Hello there the angel from the nightmare.." + testString;
+    public TestResponse helloWorld() {
+        TestResponse testResponse = new TestResponse();
+        testResponse.setMessage("Hello there the angel from the nightmare.. asdfasdf" + testString);
+        return testResponse;
     }
 
     @GetMapping("/test")

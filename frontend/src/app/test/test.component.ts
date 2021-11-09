@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TestService} from "../test.service";
 import {Observable} from "rxjs";
+import {Test} from "../Test";
 
 @Component({
   selector: 'app-test',
@@ -15,7 +16,7 @@ export class TestComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  testData(): Observable<string> {
+  testData(): Observable<Test> {
     return this.testService.getTestData();
   }
 
